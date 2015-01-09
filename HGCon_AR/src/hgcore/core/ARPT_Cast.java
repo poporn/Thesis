@@ -37,6 +37,8 @@ public class ARPT_Cast extends JFrame implements ChangeListener, ItemListener, A
 	private JPanel HG_RecPane = new JPanel(); //east
 	private JPanel threshPane = new JPanel(); // south
 	
+	private JPanel holdPane = new JPanel();
+	
 	private JLabel filterLbl = new JLabel("FILTER");
 	private JButton trueColorNonCVBtn = new JButton("True Color Non-CV");
 	private JButton trueColorCVBtn = new JButton("True Color CV");
@@ -76,13 +78,12 @@ public class ARPT_Cast extends JFrame implements ChangeListener, ItemListener, A
 		filterPane.add(CVBtn); CVBtn.addActionListener(this);
 		
 		
-		
 		core.start();
 		contentPane = new JPanel()	{
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                
                 BufferedImage dimg = core.getImage();
-//                resizeB(dimg, 500, 700);
                 g.drawImage(dimg, 0, 0, null);
                 repaint();
             }
@@ -90,6 +91,7 @@ public class ARPT_Cast extends JFrame implements ChangeListener, ItemListener, A
         
 		//content components
 		add(contentPane, BorderLayout.CENTER);
+		
 		
 		
 		//hg_rec component
@@ -115,7 +117,6 @@ public class ARPT_Cast extends JFrame implements ChangeListener, ItemListener, A
         threshPane.add(tVal, BorderLayout.NORTH);
         
         threshSlider.addChangeListener(this);
-        
 		
 	}//construct
 	
